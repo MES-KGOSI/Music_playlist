@@ -110,7 +110,18 @@ class MainActivity : ComponentActivity() {
                             } }) {
                             Text("Add to Playlist")
                         }
+                        // Navigate to list screen
+                        Button(onClick = { currentScreen = "list" }) {
+                            Text("View Playlist")
+                        }
 
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        // Exit app
+                        Button(onClick = { finish() }) {
+                            Text("Exit App")
+                        }
+                    }
 
                     }
                 }
@@ -118,7 +129,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
 
 
