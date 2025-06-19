@@ -59,8 +59,6 @@ class MainActivity : ComponentActivity() {
             var comment by remember { mutableStateOf("") }
 
 
-
-
             // State for displaying input error messages
             var error by remember { mutableStateOf("") }
 
@@ -118,7 +116,7 @@ class MainActivity : ComponentActivity() {
                             } else {
                                 // Add input values to parallel arrays
                                 songTitles.add(songtitle)
-                                artistNames.add(songtitle)
+                                artistNames.add(artistname)
                                 ratings.add(rating)
                                 comments.add(comment)
 
@@ -144,6 +142,7 @@ class MainActivity : ComponentActivity() {
                             Text("Exit App")
                         }
                     }
+
                     // Second screen: Display stored playlist
                     "list" -> {
                         Text("Playlist", fontSize = 22.sp)
@@ -164,9 +163,9 @@ class MainActivity : ComponentActivity() {
                             Button (onClick = { currentScreen = "main" }) {
                                 Text("Back")
 
-                        }
+                            }
                             // Display playlist of songs
-                        Spacer(modifier = Modifier.height(20.dp))
+                            Spacer(modifier = Modifier.height(20.dp))
 
                             Button( // Playlist
                                 onClick = { currentScreen = "Playlist" }) {
@@ -181,14 +180,16 @@ class MainActivity : ComponentActivity() {
                             }
 
 
-                                }
                         }
-                        }
-
                     }
                 }
+
             }
         }
+    }
+}
+
+
 
 
 
