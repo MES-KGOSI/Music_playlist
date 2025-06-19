@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
@@ -81,6 +82,36 @@ class MainActivity : ComponentActivity() {
                         )
                         OutlinedTextField(value = comment, onValueChange = { comment = it }, label = { Text("Comments") })
 
+                        // Show error if required fields are empty
+                        if (error.isNotEmpty()) {
+                            Text(error, color = Color.Red)
+                        }
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        // Add to  playlist button
+                        Button(onClick = {
+                            if (songtitle.isBlank() || artistname.isBlank() || rating.isBlank()) {
+                                // Error handling: required fields missing
+                                error = "Song title, Artist's name, and rating are required."
+                            } else {
+                                // Add input values to parallel arrays
+                                songTitles.add(songtitle)
+                                artistNames.add(songtitle)
+                                ratings.add(rating)
+                                comments.add(comment)
+
+                                // Clear inputs and error
+                                songtitle = ""
+                                artistname = ""
+                                rating = ""
+                                comment = ""
+                                error = ""
+                            } }) {
+                            Text("Add to Playlist")
+                        }
+
+
                     }
                 }
 
@@ -88,6 +119,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
 
 
 
