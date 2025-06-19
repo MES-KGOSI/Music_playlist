@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
@@ -21,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -71,6 +73,14 @@ class MainActivity : ComponentActivity() {
 
                         OutlinedTextField(value = songtitle, onValueChange = { songtitle = it }, label = { Text("song title") })
                         OutlinedTextField(value = artistname, onValueChange = { artistname = it }, label = { Text("artist's name") })
+                        OutlinedTextField(
+                            value = rating,
+                            onValueChange = { rating = it },
+                            label = { Text("rating 1 to 5") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // Numbers only
+                        )
+                        OutlinedTextField(value = comment, onValueChange = { comment = it }, label = { Text("Comments") })
+
                     }
                 }
 
