@@ -62,25 +62,34 @@ class MainActivity : ComponentActivity() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                when (currentScreen){
+                when (currentScreen) {
 
                     //First screen: User input form to add playlist requirements
-                    "main"->{
+                    "main" -> {
                         Text("Add Playlist", fontSize = 22.sp)
 
-                        Spacer(modifier=Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(12.dp))
 
                         //Text fields for user input
 
-                        OutlinedTextField(value = songtitle, onValueChange = { songtitle = it }, label = { Text("song title") })
-                        OutlinedTextField(value = artistname, onValueChange = { artistname = it }, label = { Text("artist's name") })
+                        OutlinedTextField(
+                            value = songtitle,
+                            onValueChange = { songtitle = it },
+                            label = { Text("song title") })
+                        OutlinedTextField(
+                            value = artistname,
+                            onValueChange = { artistname = it },
+                            label = { Text("artist's name") })
                         OutlinedTextField(
                             value = rating,
                             onValueChange = { rating = it },
                             label = { Text("rating 1 to 5") },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // Numbers only
                         )
-                        OutlinedTextField(value = comment, onValueChange = { comment = it }, label = { Text("Comments") })
+                        OutlinedTextField(
+                            value = comment,
+                            onValueChange = { comment = it },
+                            label = { Text("Comments") })
 
                         // Show error if required fields are empty
                         if (error.isNotEmpty()) {
@@ -107,7 +116,8 @@ class MainActivity : ComponentActivity() {
                                 rating = ""
                                 comment = ""
                                 error = ""
-                            } }) {
+                            }
+                        }) {
                             Text("Add to Playlist")
                         }
                         // Navigate to list screen
@@ -122,13 +132,29 @@ class MainActivity : ComponentActivity() {
                             Text("Exit App")
                         }
                     }
+                    // Second screen: Display stored playlist
+                    "list" -> {
+                        Text("Playlist", fontSize = 22.sp)
 
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        // Show message if no playlist have been added
+                        if (songTitles.isEmpty()) {
+                            Text("No playlist added yet.")
+                        } else {
+                            // Loop through and display each playlist's details
+                            for (i in songTitles.indices) {
+                                Text("• ${songTitles[i]} (${artistNames[i]}) x${ratings[i]} - ${comments[i]}")
+                            }
+
+                        }
                     }
-                }
 
+                }
             }
         }
     }
+}
 
 
 
