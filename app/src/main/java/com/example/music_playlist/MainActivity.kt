@@ -17,8 +17,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // Set the app UI using Jetpack Compose
         setContent {
-            Music_playlistTheme {
+            {
 
 
                 }
