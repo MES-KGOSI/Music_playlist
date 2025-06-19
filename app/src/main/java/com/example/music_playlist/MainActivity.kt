@@ -36,19 +36,29 @@ class MainActivity : ComponentActivity() {
             // State variable to switch between "main" and "playlist" screen
             var currentScreen by remember { mutableStateOf("main") }
 
-            //Parallel arrays to store song the details playlist
+            //Parallel arrays to store song details playlist
 
             val songTitles = remember { mutableStateListOf<String>() }
             val artistNames = remember { mutableStateListOf<String>() }
             val ratings = remember { mutableStateListOf<String>() }
             val comments = remember { mutableStateListOf<String>() }
 
+            // Array of playlist of songs and corresponding correct answers
+            val playlist = arrayOf(
+                "Burn | Usher | 5 | Hit song",
+                "Wall to wall | Chris Brown | 5 | Hit song",
+                "Shut up and drive | Rihanna | 3 | Good song",
+                "I kissed a girl | Katy Perry | 5 | Hit song",
+            )
+            val answers = arrayOf(5, 5, 3, 5)
 
             // State variables to hold input field values
             var songtitle by remember { mutableStateOf("") }
             var artistname by remember { mutableStateOf("") }
             var rating by remember { mutableStateOf("") }
             var comment by remember { mutableStateOf("") }
+
+
 
 
             // State for displaying input error messages
@@ -155,15 +165,33 @@ class MainActivity : ComponentActivity() {
                                 Text("Back")
 
                         }
-                    }
+                            // Display playlist of songs
+                        Spacer(modifier = Modifier.height(20.dp))
 
+                            Button( // Playlist
+                                onClick = { currentScreen = "Playlist" }) {
+                                Text("Songs")
+                            }
+                            // Display rating average
+                            Spacer(modifier = Modifier.height(20.dp))
+
+                            Button( // Rating
+                                onClick = { currentScreen = "Rating" }) {
+                                Text("Average")
+                            }
+
+
+                                }
+                        }
+                        }
 
                     }
                 }
             }
         }
-    }
-}
+
+
+
 
 
 
