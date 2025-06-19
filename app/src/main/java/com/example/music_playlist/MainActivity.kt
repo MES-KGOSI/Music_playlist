@@ -43,11 +43,13 @@ class MainActivity : ComponentActivity() {
             val ratings = remember { mutableStateListOf<String>() }
             val comments = remember { mutableStateListOf<String>() }
 
+
             // State variables to hold input field values
             var songtitle by remember { mutableStateOf("") }
             var artistname by remember { mutableStateOf("") }
             var rating by remember { mutableStateOf("") }
             var comment by remember { mutableStateOf("") }
+
 
             // State for displaying input error messages
             var error by remember { mutableStateOf("") }
@@ -146,15 +148,32 @@ class MainActivity : ComponentActivity() {
                             for (i in songTitles.indices) {
                                 Text("• ${songTitles[i]} (${artistNames[i]}) x${ratings[i]} - ${comments[i]}")
                             }
+                            Spacer(modifier = Modifier.height(20.dp))
+
+                            // Back button to return to the main screen
+                            Button (onClick = { currentScreen = "main" }) {
+                                Text("Back")
 
                         }
                     }
 
+
+                    }
                 }
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
