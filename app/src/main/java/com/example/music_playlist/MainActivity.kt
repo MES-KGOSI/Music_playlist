@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
                 when (currentScreen){
 
-                    //First screen: User input form to add playlist
+                    //First screen: User input form to add playlist requirements
                     "main"->{
                         Text("Add Playlist", fontSize = 22.sp)
 
@@ -70,6 +70,7 @@ class MainActivity : ComponentActivity() {
                         //Text fields for user input
 
                         OutlinedTextField(value = songtitle, onValueChange = { songtitle = it }, label = { Text("song title") })
+                        OutlinedTextField(value = artistname, onValueChange = { artistname = it }, label = { Text("artist's name") })
                     }
                 }
 
